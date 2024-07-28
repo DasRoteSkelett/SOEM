@@ -668,11 +668,13 @@ static int ecx_map_coe_soe(ecx_contextt *context, uint16 slave, int thread_n)
          if (context->slavelist[slave].CoEdetails & ECT_COEDET_SDOCA) /* has Complete Access */
          {
             /* read PDO mapping via CoE and use Complete Access */
+            printf("DEBUG: Reading slave %d with CA\n",slave);
             rval = ecx_readPDOmapCA(context, slave, thread_n, &Osize, &Isize);
          }
          if (!rval) /* CA not available or not succeeded */
          {
             /* read PDO mapping via CoE */
+            printf("DEBUG: Reading slave %d withOUT CA\n",slave);
             rval = ecx_readPDOmap(context, slave, &Osize, &Isize);
          }
          EC_PRINT("  CoE Osize:%u Isize:%u\n", Osize, Isize);

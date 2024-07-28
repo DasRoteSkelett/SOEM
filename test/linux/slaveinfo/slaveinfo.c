@@ -423,6 +423,7 @@ int si_siiPDO(uint16 slave, uint8 t, int mapoffset, int bitoffset)
         a = PDO->Startpos;
         w = ec_siigetbyte(slave, a++);
         w += (ec_siigetbyte(slave, a++) << 8);
+        w += (ec_siigetbyte(slave, a++) << 8);
         PDO->Length = w;
         c = 1;
         /* traverse through all PDOs */

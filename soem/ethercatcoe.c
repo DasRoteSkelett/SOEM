@@ -678,6 +678,7 @@ uint32 ecx_readPDOassign(ecx_contextt *context, uint16 Slave, uint16 PDOassign)
    int32 rdat2;
    uint32 bsize = 0;
 
+   printf("ecx_readPDOassign at 0x%x\n",PDOassign);
    rdl = sizeof(rdat); rdat = 0;
    /* read PDO assign subindex 0 ( = number of PDO's) */
    wkc = ecx_SDOread(context, Slave, PDOassign, 0x00, FALSE, &rdl, &rdat, EC_TIMEOUTRXM);
