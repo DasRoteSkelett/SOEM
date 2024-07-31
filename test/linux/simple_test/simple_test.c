@@ -570,6 +570,8 @@ void simpletest(char *ifname)
                         {
                             printf(" %2.2x", *(ec_slave[0].inputs + j));
                         }
+                        printf(" D: %3d",((bbh_read_mapping_t*) ec_slave[1].inputs)->functional_outputs.debug_0);
+                        printf(" FSoE: 0x%2x",((synapticon_read_mapping_t*)ec_slave[2].inputs)->drive_to_plc.fsoe_sto_state);
                         printf(" T:%"PRId64"\r",ec_DCtime);
                         needlf = TRUE;
                     }
