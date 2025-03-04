@@ -152,10 +152,10 @@ typedef struct __attribute__((packed,aligned(1))) fsoe_safety_master_message_14_
 
 
 typedef struct __attribute__((packed,aligned(1)))  master_to_master_communication_inputs_T {
-  uint64_t smmc_inputs1;
-  uint64_t smmc_inputs2;
-  uint64_t smmc_inputs3;
-  uint64_t smmc_inputs4;
+  uint8_t smmc_inputs1[12];
+  uint8_t smmc_inputs2[12];
+  uint8_t smmc_inputs3[12];
+  uint8_t smmc_inputs4[12];
 } master_to_master_communication_inputs_t;
 
 typedef struct __attribute__((packed,aligned(1))) functional_inputs_T {
@@ -219,7 +219,7 @@ typedef struct __attribute__((packed,aligned(1))) fsoe_safety_slave_message_4_by
 } fsoe_safety_slave_message_4_bytes_in_t;
 
 typedef struct __attribute__((packed,aligned(1))) master_to_master_communication_outputs_T {
-  uint64_t smmc_outputs;
+  uint8_t smmc_outputs[12];
 } master_to_master_communication_outputs_t;
 
 typedef struct __attribute__((packed,aligned(1))) functional_outputs_T {
@@ -420,7 +420,7 @@ typedef struct __attribute__((packed,aligned(1))) slave_1_pdo_mapping_T {
 typedef struct __attribute__((packed,aligned(1))) synapticon_read_mapping_T {
   cia_402_tx_t cia_402_tx;
   cia_402_tx2_t cia_402_tx2;
-  cia_402_tx3_t cia_402_tx3;
+//  cia_402_tx3_t cia_402_tx3;
   cia_402_tx4_t cia_402_tx4;
   drive_to_plc_t drive_to_plc;
 } synapticon_read_mapping_t;
@@ -445,10 +445,10 @@ int BBHsetup(uint16 slave) {
     printf("Executing BBHSetup\n");
     uint8_t initModulesBBHSize = (uint8_t) sizeof(initModulesBBH) / sizeof(initModulesBBH[0]);
     ec_slave[slave].SM[2].SMflags = htoel(0x64);
-    ec_slave[slave].SM[2].SMlength = htoes(82);
+    ec_slave[slave].SM[2].SMlength = htoes(98);
     ec_slave[slave].SM[2].StartAddr = htoes(0x1200);
     ec_slave[slave].SM[3].SMflags = htoel(0x20);
-    ec_slave[slave].SM[3].SMlength = htoes(54);
+    ec_slave[slave].SM[3].SMlength = htoes(58);
     ec_slave[slave].SM[3].StartAddr = htoes(0x1800);
 
     ec_slave[slave].SMtype[2] = 3;
