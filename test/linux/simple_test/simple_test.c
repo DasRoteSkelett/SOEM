@@ -147,6 +147,23 @@ typedef struct __attribute__((packed,aligned(1))) fsoe_safety_master_message_14_
   uint8_t fsoe_data1_110 : 1;
   uint8_t fsoe_data1_111 : 1;
   uint16_t fsoe_master_crc_6;
+  uint8_t fsoe_data1_112 : 1;
+  uint8_t fsoe_data1_113 : 1;
+  uint8_t fsoe_data1_114 : 1;
+  uint8_t fsoe_data1_115 : 1;
+  uint8_t fsoe_data1_116 : 1;
+  uint8_t fsoe_data1_117 : 1;
+  uint8_t fsoe_data1_118 : 1;
+  uint8_t fsoe_data1_119 : 1;
+  uint8_t fsoe_data1_120 : 1;
+  uint8_t fsoe_data1_121 : 1;
+  uint8_t fsoe_data1_122 : 1;
+  uint8_t fsoe_data1_123 : 1;
+  uint8_t fsoe_data1_124 : 1;
+  uint8_t fsoe_data1_125 : 1;
+  uint8_t fsoe_data1_126 : 1;
+  uint8_t fsoe_data1_127 : 1;
+  uint16_ fsoe_master_crc_7;
   uint16_t fsoe_master_connection_id;  /* FSoE SafetyMasterMessage 14 Bytes Out *End* */
 } fsoe_safety_master_message_14_bytes_out_t;
 
@@ -398,6 +415,8 @@ typedef struct __attribute__((packed,aligned(1))) drive_to_plc_T {
   uint16_t fsoe_crc_5;
   int16_t fsoe_safe_analog_value_scaled;
   uint16_t fsoe_crc_6;
+  int16_t fsoe_safe_torque;
+  uint16_t fsoe_crc_7;
   uint16_t fsoe_connection_id;
 } drive_to_plc_t;
 
@@ -445,7 +464,7 @@ int BBHsetup(uint16 slave) {
     printf("Executing BBHSetup\n");
     uint8_t initModulesBBHSize = (uint8_t) sizeof(initModulesBBH) / sizeof(initModulesBBH[0]);
     ec_slave[slave].SM[2].SMflags = htoel(0x64);
-    ec_slave[slave].SM[2].SMlength = htoes(98);
+    ec_slave[slave].SM[2].SMlength = htoes(102);
     ec_slave[slave].SM[2].StartAddr = htoes(0x1200);
     ec_slave[slave].SM[3].SMflags = htoel(0x20);
     ec_slave[slave].SM[3].SMlength = htoes(58);
